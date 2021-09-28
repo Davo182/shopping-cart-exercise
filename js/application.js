@@ -2,7 +2,7 @@ let counter = 0;
 $(document).ready(function () {
     $('#add-item').on('click', addItem);
     $('tbody').on('input', '.quantity', function () {
-        $(this).on('input', changeQuantity);
+        $(this).on('keyup', changeQuantity);
     });
     $('tbody').on('click', '#btn-remove', function () {
         $(this).closest('tr').remove();
