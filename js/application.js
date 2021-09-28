@@ -17,7 +17,13 @@ let sumItemsPrices = function () {
     $('tbody tr').each(function () {
         let price = parseFloat($(this).children('.item-price').children('span').text());
         let quantity = parseFloat($(this).children('.item-quantity').children('.quantity').val());
-        $(this).children('.final-price').children('span').html((price.toFixed(2) * quantity.toFixed(2)).toFixed(2));
+        if (price > 0 & quantity > 0) {
+            $(this).children('.final-price').children('span').html((price.toFixed(2) * quantity.toFixed(2)).toFixed(2));
+        } else {
+            price = 0;
+            quantity = 0;
+            $(this).children('.final-price').children('span').html((price.toFixed(2) * quantity.toFixed(2)).toFixed(2));
+        }
     });
 }
 
@@ -26,7 +32,7 @@ let changeQuantity = function () {
     clearTimeout(timeout);
     timeout = setTimeout(function () {
         sumItemsPrices();
-    },500);
+    }, 500);
 }
 
 let addItem = function () {
